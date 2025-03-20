@@ -1,11 +1,13 @@
 const express = require("express");
-require("dotenv").config();
 const cors = require("cors");
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/authUser");
 const connectDB = require("./connection");
 const cookieParser = require("cookie-parser");
 const isAuthenticated = require("./middlewares/auth");
+if (process.env.NODE_ENV !== "production") { 
+    require("dotenv").config(); 
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
